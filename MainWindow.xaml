@@ -21,7 +21,6 @@
         </Button>
         <Label Content="Handwriting recognizer built by Kushal Timsina" HorizontalAlignment="Center" Margin="0,81,0,0" VerticalAlignment="Top"/>
         <Label Content="Predicted Digit" HorizontalAlignment="Left" Margin="545,0,0,0" VerticalAlignment="Center" FontSize="18" FontWeight="Bold"/>
-        <Frame Content="" Margin="550,250,122,118" Foreground="Black" Background="#FF5317FF" NavigationUIVisibility="Hidden"/>
-        <Label x:Name="predictedDigitLabel" Content="0" HorizontalAlignment="Left" Margin="595,246,0,0" VerticalAlignment="Top" IsEnabled="False" FontSize="48" FontWeight="Bold" Foreground="White" Background="{x:Null}"/>
+        <Label x:Name="predictedDigitLabel" Content="0" HorizontalAlignment="Left" Margin="595,234,0,0" VerticalAlignment="Top" IsEnabled="False" FontSize="48" FontWeight="Bold" Foreground="#FF5317FF" Background="{x:Null}"/>
     </Grid>
 </Window>

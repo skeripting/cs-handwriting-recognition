@@ -1,5 +1,7 @@
 import torch
 import torchvision
+import os 
+
 import torchvision.transforms as transforms
 from torch.utils.data import random_split
 from torchvision.datasets import ImageFolder
@@ -47,14 +49,16 @@ class MyModel(nn.Module):
 
 model = MyModel()
 
-model.load_state_dict(torch.load("model.pt"))
+current_dir = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(current_dir, "model.pt")
+
+model.load_state_dict(torch.load(model_path))
 
 model.eval()
 
 
 def predict(image_location):
   im = read_image(image_location)
-  plt.imshow(im.permute(1, 2, 0)/255, cmap='gray')
 
   # Load the image
   image = Image.open(image_location).convert('L')  # Convert to grayscale
@@ -79,11 +83,10 @@ def predict(image_location):
   return str(prediction.item())
 
 
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python main.py <image_path>")
-        sys.exit(1)
+if len(sys.argv) != 2:
+    print("Usage: python main.py <image_path>")
+    sys.exit(1)
 
-    image_path = sys.argv[1]
-    result = predict(image_path)
-    print(result)
+image_path = sys.argv[1]
+result = predict(image_path)
+print(result)

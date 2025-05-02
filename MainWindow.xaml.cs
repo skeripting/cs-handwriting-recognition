@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace HandwritingRecognition
 {
@@ -32,6 +33,7 @@ namespace HandwritingRecognition
                 Arguments = $"\"C:\\Users\\kusha\\source\\repos\\HandwritingRecognition\\digit-recognizer\\main.py\" \"{imagePath}\"",
                 RedirectStandardOutput = true,
                 UseShellExecute = false,
+                RedirectStandardError = true,
                 CreateNoWindow = true
             };
 
@@ -45,14 +47,15 @@ namespace HandwritingRecognition
 
                 string output = process.StandardOutput.ReadToEnd();
                 string error = process.StandardError.ReadToEnd();
+
                 process.WaitForExit();
 
-                if (!string.IsNullOrEmpty(error))
+                if (!string.IsNullOrWhiteSpace(error))
                 {
-                    return $"Error: {error}";
+                    MessageBox.Show("Python error: " + error);
                 }
 
-                return output.Trim(); 
+                return output;
             }
         }
 
@@ -66,9 +69,6 @@ namespace HandwritingRecognition
                 string filePath = openFileDialog.FileName;
 
                 imagePreview.Source = new BitmapImage(new Uri(filePath));
-
-                //Read the contents of the file into a stream
-                var fileStream = openFileDialog.OpenFile();
 
                 string prediction = GetPrediction(filePath);
 
