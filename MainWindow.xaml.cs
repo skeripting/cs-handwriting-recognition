@@ -9,6 +9,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Threading.Tasks;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -55,11 +56,11 @@ namespace HandwritingRecognition
                     MessageBox.Show("Python error: " + error);
                 }
 
-                return output;
+                return output.Trim();
             }
         }
 
-        private void OnUploadClicked(object sender, RoutedEventArgs e)
+        private async void OnUploadClicked(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Image Files(*.PNG;*.JPG;*.BMP;*.GIF;)|*.PNG;*.JPG;*.BMP;*.GIF;|All files (*.*)|*.*";
@@ -70,7 +71,12 @@ namespace HandwritingRecognition
 
                 imagePreview.Source = new BitmapImage(new Uri(filePath));
 
-                string prediction = GetPrediction(filePath);
+                predictedDigitLabel.Content = "...";
+
+                // I used multithreading here to stop the program from freezing while waiting for
+                // the prediction
+
+                string prediction = await Task.Run(() => GetPrediction(filePath));
 
                 predictedDigitLabel.Content = prediction;
             }
