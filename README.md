@@ -1,8 +1,8 @@
 # Handwriting Recognizer
 This is a desktop application that allows users to upload images of 28x28 handwritten digits and receive real-time predictions using a Convolutional Neural Network (CNN) trained on the MNIST dataset. Built with C# WPF for the frontend and Python for the machine learning backend.
 
-## 🔗 Live Demo
-Since this is a desktop application, a live demo isn't available. However, you can clone the repository and run it locally.
+## 🎥 Demo
+[![Watch the demo](https://img.youtube.com/vi/L7gC_qKsXtY/hqdefault.jpg)](https://www.youtube.com/watch?v=L7gC_qKsXtY)
 
 ## 🛠 How It's Made
 Tech Stack:
@@ -38,7 +38,7 @@ Learned the intricacies of inter-process communication and managing asynchronous
 Understood the importance of user experience in application responsiveness and feedback.
 
 ## 📸 Screenshots
-[img](https://pbs.twimg.com/media/Gp9fdZjXoAA853h?format=png&name=900x900)
+![Prediction UI](https://pbs.twimg.com/media/Gp9fdZjXoAA853h?format=png&name=900x900)
 
 ## 📄 License
 This project is licensed under the MIT License.
