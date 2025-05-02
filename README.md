@@ -1,4 +1,5 @@
 # Handwriting Recognizer
+> c# wpf handwriting recognizer
 This is a desktop application that allows users to upload images of 28x28 handwritten digits and receive real-time predictions using a Convolutional Neural Network (CNN) trained on the MNIST dataset. Built with C# WPF for the frontend and Python for the machine learning backend.
 
 ## Demo
